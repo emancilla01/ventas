@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 3</title>
+
+</head>
+<body>
+    <h1>Unidad 3</h1>
+    <h2>JavaScript</h2>
+    <hr>
+    <label for="">Dame un Numero :</label>
+    <input type="number" id="numero1">
+    <button onclick="ver()">Ver el numero capturado</button>
+    <button onclick="eliminar()">Eliminar</button>
+    <hr>
+    <div>
+        <h4 id="h4"></h4>
+    </div>
+    <hr>
+    <p>Contador ; <span id="sp1" style="font-size: 150px;"></span></p>
+    <button onclick="operacion(this)">atras</button>
+    <button onclick="operacion(this)">adelante</button>
+</body>
+<script>
+    let n1 = "1200";
+    let sp1 = document.querySelector('#sp1');
+    sp1.innerHTML = n1;
+    // function aumentar() {
+    // n1++;
+    // sp1.innerHTML = n1;
+    // }
+    // function disminuir() {
+    // n1--;
+    // sp1.innerHTML = n1;
+    // }
+    function operacion(boton) {
+        // alert(boton.innerHTML);
+        if(boton.innerHTML == "atras"){
+            n1--;
+        }else{
+            n1++;
+        } sp1.innerHTML = n1;
+    }
+
+    function ver(){ 
+    let num1 = document.querySelector('#numero1');
+    let h4 = document.querySelector('#h4');
+    
+    for (i=1; i<=num1.value; i++) {
+        
+    
+    h4.innerHTML = h4.innerHTML + "El numero capturado es " + i + "<br>";
+    }
+
+    alert(num1.value);
+    }
+    function eliminar(){
+        let h4 = document.querySelector('#h4');
+        h4.innerHTML = "";
+    }
+    // alert(n1);
+</script>
+</html>

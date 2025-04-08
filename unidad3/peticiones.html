@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periciones</title>
+</head>
+<body>
+    <h1>Peticiones FETCH</h1>
+    <hr>
+    <form action="resultados.php" method="get" id="form1">
+        <label for="">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+
+        <label for="">Edad: </label>
+        <input type="text" name="edad" id="edad">
+
+        <label for="">Tel: </label>
+        <input type="text" name="tel" id="tel">
+        <!-- <input type="submit" value="Enviar"> -->
+        <!-- <button>Enviar</button> -->
+        <input type="button" value="Enviar" onclick="enviardatos()">
+    </form>
+    <hr>
+    <section id="cont1">
+        
+
+    </section>
+</body>
+<script>
+    function enviardatos() {
+    cont1 = document.querySelector("#cont1");
+    datos = new FormData(document.getElementById("form1"));
+    fetch("resultados.php", {
+                                body: datos , 
+                                method: "post"
+                            })
+    .then(response => response.text())
+    .then(data => {cont1.innerHTML = data;})
+ }
+ </script>
+</html>
