@@ -35,16 +35,14 @@ class db {
     public function desconectar(){
         $this->conn = null;
     }   
-    public function insertar($sql){
-        $this->conn = $this->conectar();
+    public function insertar($sql){        
         try {
             // use exec() because no results are returned
             $this->conn->exec($sql);
             echo "Registro insertado correctamente";
         } catch(PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
-        }
-        $this->desconectar($conn);
+        }        
     }
     public function actualizar($sql){
         $conn = $this->conectar();
