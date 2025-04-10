@@ -45,26 +45,24 @@ class db {
         }        
     }
     public function actualizar($sql){
-        $conn = $this->conectar();
+        $this->conn = $this->conectar();
         try {
             // use exec() because no results are returned
-            $conn->exec($sql);
+            $this->conn->exec($sql);
             echo "Registro actualizado correctamente";
         } catch(PDOException $e) {
             echo "<br>" . $e->getMessage();
         }
-        $this->desconectar($conn);
+        
     }
     public function eliminar($sql){
-        $conn = $this->conectar();
-        try {
-            // use exec() because no results are returned
-            $conn->exec($sql);
+        $this->conn = $this->conectar();
+        try {           
+            $this->conn->exec($sql);
             echo "Registro eliminado correctamente";
         } catch(PDOException $e) {
             echo "<br>" . $e->getMessage();
-        }
-        $this->desconectar($conn);
+        }        
     }
     public function obtenerRegistros($sql){
         $this->conn = $this->conectar();
