@@ -31,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-
-
 <article>
     <h2>Articulos</h2>
     <form action="/index.html" method="post" id="articulos" onsubmit="return false;">
