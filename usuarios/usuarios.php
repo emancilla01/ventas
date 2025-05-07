@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($accion === "consultar") {
         $sql = "SELECT * FROM usuarios;";   
-    }elseif ($accion === "insertar") {
+    } elseif ($accion === "insertar") {
         $sql = "INSERT INTO usuarios ('id', 'nombre', 'email', 'contraseña') 
                 VALUES ('$id', '$nombre', '$email', '$contraseña')";
     } elseif ($accion === "editar") {
