@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($accion === "editar") {
         $sql = "SELECT * FROM articulos WHERE id = '$id'";
     } elseif ($accion === "actualizar") {
-        $sql = "UPDATE articulos SET nombre = '$nombre' WHERE id = '$id'";
+        $sql = "UPDATE articulos SET nombre = '$nombre', descripcion = '$descripcion', precio = '$precio',
+        stock = '$stock' WHERE id = '$id'";
     } elseif ($accion === "eliminar") {
         $sql = "DELETE FROM articulos WHERE id = '$id'";
     }
@@ -58,9 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- <button type="button" onclick="enviar()">Enviar</button> -->
     <button onclick="peticiones('consultar', '/articulos/articulos.php', 'articulos')">Consultar</button>
     <button onclick="peticiones('insertar', '/articulos/articulos.php', 'articulos')">Insertar</button>
-    <button onclick="peticiones('editar', )">Editar</button>
-    <button onclick="peticiones('actualizar')">Actualizar</button>
-    <button onclick="peticiones('eliminar')">Eliminar</button>
+    <button onclick="peticiones('editar', '/articulos/articulos.php', 'articulos' )">Editar</button>
+    <button onclick="peticiones('actualizar', '/articulos/articulos.php', 'articulos')">Actualizar</button>
+    <button onclick="peticiones('eliminar', '/articulos/articulos.php', 'articulos')">Eliminar</button>
 
     </form>
 
