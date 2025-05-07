@@ -22,7 +22,24 @@ function enviardatos() {
         })
     .then(response => response.text())
     .then(data => {cont1.innerHTML = data;})
+    
  }
+    function peticiones(accion, url = "/categorias/frm.php", formId = "frm") {
+    const form = document.getElementById(formId);
+    const formData = new FormData(form);
+    formData.set("accion", accion);
+
+    fetch(url, {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("resultados").innerHTML = data;
+    });
+}
+
+
  function editar(id,nombre){
     // alert(id +" " + nombre);
     id2 = document.getElementById('id');

@@ -1,4 +1,30 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_REQUEST['id'];
+    $nombre = $_REQUEST['nombre'];
+    $accion = $_REQUEST['accion'];
 
+    if ($accion === "consultar") {
+        $sql = "SELECT * FROM categorias;";   
+    }elseif ($accion === "insertar") {
+        $sql = "INSERT INTO categorias ('id', 'nombre') 
+                VALUES ('$id', '$nombre')";
+    } elseif ($accion === "editar") {
+        $sql = "SELECT * FROM categorias WHERE id = '$id'";
+    } elseif ($accion === "actualizar") {
+        $sql = "UPDATE categorias SET nombre = '$nombre' WHERE id = '$id'";
+    } elseif ($accion === "eliminar") {
+        $sql = "DELETE FROM categorias WHERE id = '$id'";
+    }
+    else {
+        $sql = "Acción no válida.";
+    }
+
+    echo $sql;
+    exit; // evita que también se muestre el HTML
+}
+
+?>
 
 
 <article>
@@ -7,16 +33,22 @@
     <form action="/index.html" method="post" id="frm" onsubmit="return false;"> 
         
         <label for="id">Id:</label>
-        <input type="text" name="id" id="id" value="" readonly >
+        <input type="text" name="id" id="id" value="" readonly>
 
         <label for="nombre">Nombre :</label>
         <input type="text" name="nombre" id="nombre">
                 
-        <label></label>
+        
         <button onclick="enviardatos()">Grabar</button>
+        <button onclick="peticiones('consultar')">Consultar</button>
+        <button onclick="peticiones('insertar')">Insertar</button>
+        <button onclick="peticiones('editar')">Editar</button>
+        <button onclick="peticiones('actualizar')">Actualizar</button>
+        <button onclick="peticiones('eliminar')">Eliminar</button>
 
     </form>
 <!-- </div> -->
 
     
 </article>
+<div id="resultados" style="margin-top: 20px;"></div>
