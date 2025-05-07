@@ -1,24 +1,47 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_REQUEST['id'];
-    $nombre = $_REQUEST['nombre'];
-    $email = $_REQUEST['email'];
-    $contraseña = $_REQUEST['contraseña'];
+    $idproveedor = $_REQUEST['idproveedor'];
+    $total = $_REQUEST['total'];
+    $fecha = $_REQUEST['fecha'];    
+    $idcompra = $_REQUEST['idcompra'];
+    $idarticulo = $_REQUEST['idarticulo'];
+    $cantidad = $_REQUEST['cantidad'];
+    $preciounit = $_REQUEST['preciounit'];
+    $subtotal = $_REQUEST['subtotal'];
     $accion = $_REQUEST['accion'];
     
 
     if ($accion === "consultar") {
-        $sql = "SELECT * FROM usuarios;";   
+        $sql = "SELECT * FROM compras;";   
     } elseif ($accion === "insertar") {
-        $sql = "INSERT INTO usuarios ('id', 'nombre', 'email', 'contraseña') 
-                VALUES ('$id', '$nombre', '$email', '$contraseña')";
+        $sql = "INSERT INTO compras ('id', 'idproveedor', 'total', 'fecha') 
+                VALUES ('$id', '$idproveedor', '$total', '$fecha')";
     } elseif ($accion === "editar") {
-        $sql = "SELECT * FROM usuarios WHERE id = '$id'";
+        $sql = "SELECT * FROM compras WHERE id = '$id'";
     } elseif ($accion === "actualizar") {
-        $sql = "UPDATE usuarios SET nombre = '$nombre', email = '$email', contraseña = '$contraseña',
+        $sql = "UPDATE compras SET idproveedor = '$idproveedor', total = '$total', fecha = '$fecha',
         WHERE id = '$id'";
     } elseif ($accion === "eliminar") {
-        $sql = "DELETE FROM usuarios WHERE id = '$id'";
+        $sql = "DELETE FROM compras WHERE id = '$id'";
+    }
+    else {
+        $sql = "Acción no válida.";
+    }
+
+    if ($accion === "consultardetalle") {
+        $sql = "SELECT * FROM compras;";   
+    } elseif ($accion === "insertardetalle") {
+        $sql = "INSERT INTO compras ('id', 'idcompra', 'idarticulo', 'cantidad', 'preciounit', 'subtotal') 
+                VALUES ('$id', '$idcompra', '$idarticulo', '$cantidad', '$preciounit', '$subtotal')";
+    } elseif ($accion === "editardetalle") {
+        $sql = "SELECT * FROM compras WHERE id = '$id'";
+    } elseif ($accion === "actualizardetalle") {
+        $sql = "UPDATE compras SET idcompra = '$idcompra', idarticulo = '$idarticulo', cantidad = '$cantidad', 
+        preciounit = '$preciounit', subtotal = '$subtotal'
+        WHERE id = '$id'";
+    } elseif ($accion === "eliminardetalle") {
+        $sql = "DELETE FROM compras WHERE id = '$id'";
     }
     else {
         $sql = "Acción no válida.";
@@ -30,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <article>
     <h2>Compras</h2>
-    <form action="/index.html" method="get" id="">
+    <form action="/index.html" method="post" id="compras" onsubmit="return false;">
         
         <!-- <label for=""></label> -->
         <label for="id">Id:</label>
@@ -48,20 +71,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- <label></label>
         <button type="button" onclick="enviar()">Enviar</button> -->
 
-        <button onclick="peticiones('consultar', '/usuarios/usuarios.php', 'usuarios')">Consultar</button>
-        <button onclick="peticiones('insertar', '/usuarios/usuarios.php', 'usuarios')">Insertar</button>
-        <button onclick="peticiones('editar', '/usuarios/usuarios.php', 'usuarios' )">Editar</button>
-        <button onclick="peticiones('actualizar', '/usuarios/usuarios.php', 'usuarios')">Actualizar</button>
-        <button onclick="peticiones('eliminar', '/usuarios/usuarios.php', 'usuarios')">Eliminar</button>
+        <button onclick="peticiones('consultar', '/compras/compras.php', 'compras')">Consultar</button>
+        <button onclick="peticiones('insertar', '/compras/compras.php', 'compras')">Insertar</button>
+        <button onclick="peticiones('editar', '/compras/compras.php', 'compras' )">Editar</button>
+        <button onclick="peticiones('actualizar', '/compras/compras.php', 'compras')">Actualizar</button>
+        <button onclick="peticiones('eliminar', '/compras/compras.php', 'compras')">Eliminar</button>
 
     </form>
 
     <h2>Detalle de Compras</h2>
-    <form action="/index.html" method="get" id="">
+    <form action="/index.html" method="post" id="detallecompras" onsubmit="return false;">
         
         <!-- <label for=""></label> -->
-        <label for="iddetalle">Id:</label>
-        <input type="number" name="iddetalle" id="iddetalle">
+        <label for="id">Id:</label>
+        <input type="number" name="id" id="id">
 
         <label for="idcompra">Id Compra :</label>
         <input type="number" name="idcompra" id="idcompra">
@@ -82,11 +105,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- <label></label>
         <button type="button" onclick="enviar()">Enviar</button> -->
 
-        <button onclick="peticiones('consultar', '/usuarios/usuarios.php', 'usuarios')">Consultar</button>
-        <button onclick="peticiones('insertar', '/usuarios/usuarios.php', 'usuarios')">Insertar</button>
-        <button onclick="peticiones('editar', '/usuarios/usuarios.php', 'usuarios' )">Editar</button>
-        <button onclick="peticiones('actualizar', '/usuarios/usuarios.php', 'usuarios')">Actualizar</button>
-        <button onclick="peticiones('eliminar', '/usuarios/usuarios.php', 'usuarios')">Eliminar</button>
+        <button onclick="peticiones('consultardetalle', '/compras/compras.php', 'detallecompras')">Consultar</button>
+        <button onclick="peticiones('insertardetalle', '/compras/compras.php', 'detallecompras')">Insertar</button>
+        <button onclick="peticiones('editardetalle', '/compras/compras.php', 'detallecompras' )">Editar</button>
+        <button onclick="peticiones('actualizardetalle', '/compras/compras.php', 'detallecompras')">Actualizar</button>
+        <button onclick="peticiones('eliminardetalle', '/compras/compras.php', 'detallecompras')">Eliminar</button>
 
 
     </form>
