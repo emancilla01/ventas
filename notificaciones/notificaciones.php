@@ -69,8 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option value="3">opcion3</option>
     </select>
     
-
-
     <!-- <label></label>
     <button type="button" onclick="enviar()">Enviar</button> -->
     
