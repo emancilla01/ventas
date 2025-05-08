@@ -1,14 +1,14 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_REQUEST['id'];
-    $idproveedor = $_REQUEST['idproveedor'];
-    $total = $_REQUEST['total'];
-    $fecha = $_REQUEST['fecha'];    
-    $idcompra = $_REQUEST['idcompra'];
-    $idarticulo = $_REQUEST['idarticulo'];
-    $cantidad = $_REQUEST['cantidad'];
-    $preciounit = $_REQUEST['preciounit'];
-    $subtotal = $_REQUEST['subtotal'];
+    $id = $_REQUEST['id'];    
+    $idproveedor = isset($_REQUEST['idproveedor']) ? $_REQUEST['idproveedor'] : null;
+    $idarticulo = isset($_REQUEST['idarticulo']) ? $_REQUEST['idarticulo'] : null;
+    $idcompra = isset($_REQUEST['idcompra']) ? $_REQUEST['idcompra'] : null;
+    $total = isset($_REQUEST['total']) ? $_REQUEST['total'] : null;
+    $fecha = isset($_REQUEST['fecha']) ? $_REQUEST['fecha'] : null;    
+    $cantidad = isset($_REQUEST['cantidad']) ? $_REQUEST['cantidad'] : null;
+    $preciounit = isset($_REQUEST['preciounit']) ? $_REQUEST['preciounit'] : null;    
+    $subtotal = isset($_REQUEST['subtotal']) ? $_REQUEST['subtotal'] : null;    
     $accion = $_REQUEST['accion'];
     
 
@@ -25,11 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($accion === "eliminar") {
         $sql = "DELETE FROM compras WHERE id = '$id'";
     }
-    else {
-        $sql = "Acción no válida.";
-    }
-
-    if ($accion === "consultardetalle") {
+    
+    elseif ($accion === "consultardetalle") {
         $sql = "SELECT * FROM compras;";   
     } elseif ($accion === "insertardetalle") {
         $sql = "INSERT INTO compras ('id', 'idcompra', 'idarticulo', 'cantidad', 'preciounit', 'subtotal') 
