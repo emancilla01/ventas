@@ -47,10 +47,10 @@ function enviardatos() {
     id2.value = id;
     nombre2.value = nombre;
  }
- function eliminar(id) {
-    cont3 = document.querySelector("#contenedor3");
-    datos = new FormData(document.getElementById("frm"));
-    fetch("/categorias/eliminar.php?id="+id)
-    .then(response => response.text())
-    .then(data => {cont3.innerHTML = data;})
- }
+//  function eliminar(id) {
+//     cont3 = document.querySelector("#contenedor3");
+//     datos = new FormData(document.getElementById("frm"));
+//     fetch("/categorias/eliminar.php?id="+id)
+//     .then(response => response.text())
+//     .then(data => {cont3.innerHTML = data;})
+//  }
