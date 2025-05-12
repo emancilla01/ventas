@@ -11,7 +11,7 @@ $datos = $articulos->obtenerRegistros($sql);
 
 <?php include_once "../articulos/frm.php"; ?>
 
-<!-- <div id="contenedor3" >
+<!-- <div id="contenedortabla" >
 
 </div> -->
 

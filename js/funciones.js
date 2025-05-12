@@ -61,10 +61,28 @@ function enviardatos(formId, url, divId) {
     id2.value = id;
     nombre2.value = nombre;
  }
- function eliminar(id) {
-    cont3 = document.querySelector("#contenedor3");
-    datos = new FormData(document.getElementById("frm"));
-    fetch("/categorias/eliminar.php?id="+id)
-    .then(response => response.text())
-    .then(data => {cont3.innerHTML = data;})
- }
+
+ function eliminar(id, url, divId) {
+    const cont = document.querySelector("#" + divId);
+    fetch(url + "?id=" + id)
+        .then(response => response.text())
+        .then(data => { cont.innerHTML = data; });
+}
+
+//PRUEBA FUNCION CONSULTAR TABLA
+// function consultarTabla(url, divId) {
+//     fetch(url)
+//         .then(response => response.text())
+//         .then(data => {
+//             document.getElementById(divId).innerHTML = data;
+//         });
+// }
+
+// funcion original de eliminar
+//  function eliminar(id) {
+//     cont3 = document.querySelector("#contenedor3");
+//     datos = new FormData(document.getElementById("frm"));
+//     fetch("/categorias/eliminar.php?id="+id)
+//     .then(response => response.text())
+//     .then(data => {cont3.innerHTML = data;})
+//  }

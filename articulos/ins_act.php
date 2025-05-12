@@ -1,6 +1,6 @@
 <?php
 
-var_dump($_REQUEST);
+
   include_once "../db/db.php";
   $articulos = new db();
   $articulos->conectar();
