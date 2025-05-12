@@ -35,7 +35,8 @@ class db {
     public function desconectar(){
         $this->conn = null;
     }   
-    public function insertar($sql){        
+    public function insertar($sql){ 
+        // $this->conn = $this->conectar();       
         try {
             // use exec() because no results are returned
             $this->conn->exec($sql);

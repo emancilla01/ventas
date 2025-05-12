@@ -13,17 +13,31 @@ function ver(url) {
         .then (response => response.text())
         .then (data => {div1.innerHTML = data });
 }
-function enviardatos() {
-    cont1 = document.querySelector("#contenedor1");
-    datos = new FormData(document.getElementById("frm"));
-    fetch("/categorias/ins_act.php", {
-            body: datos , 
-            method: "post"
-        })
+
+//funcion prueba
+function enviardatos(formId, url, divId) {
+    let cont = document.querySelector("#" + divId);
+    let datos = new FormData(document.getElementById(formId));
+    fetch(url, {
+        body: datos,
+        method: "post"
+    })
     .then(response => response.text())
-    .then(data => {cont1.innerHTML = data;})
+    .then(data => { cont.innerHTML = data; });
+}
+
+// funcion original de enviardatos
+// function enviardatos() {
+//     cont1 = document.querySelector("#contenedor1");
+//     datos = new FormData(document.getElementById("frm"));
+//     fetch("/categorias/ins_act.php", {
+//             body: datos , 
+//             method: "post"
+//         })
+//     .then(response => response.text())
+//     .then(data => {cont1.innerHTML = data;})
     
- }
+//  }
     function peticiones(accion, url = "/categorias/frm.php", formId = "frm") {
     const form = document.getElementById(formId);
     const formData = new FormData(form);
@@ -47,10 +61,10 @@ function enviardatos() {
     id2.value = id;
     nombre2.value = nombre;
  }
-//  function eliminar(id) {
-//     cont3 = document.querySelector("#contenedor3");
-//     datos = new FormData(document.getElementById("frm"));
-//     fetch("/categorias/eliminar.php?id="+id)
-//     .then(response => response.text())
-//     .then(data => {cont3.innerHTML = data;})
-//  }
+ function eliminar(id) {
+    cont3 = document.querySelector("#contenedor3");
+    datos = new FormData(document.getElementById("frm"));
+    fetch("/categorias/eliminar.php?id="+id)
+    .then(response => response.text())
+    .then(data => {cont3.innerHTML = data;})
+ }
