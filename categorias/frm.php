@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
         
         <button onclick="enviardatos('frm', '/categorias/ins_act.php', 'contenedor1')">Grabar</button>
+        <button onclick="">Consultar</button> 
 
         <!-- tarea proyecto unidad 3 -->
         <!-- <button onclick="peticiones('consultar')">Consultar</button>
