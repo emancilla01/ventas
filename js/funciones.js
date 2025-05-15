@@ -1,4 +1,3 @@
-
 function ver(url) {
     div1 = document.querySelector("#contenedor1");
     fetch (url)
