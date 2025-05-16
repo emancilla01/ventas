@@ -1,3 +1,4 @@
+
 <form action="" method="post" id="frm_detalle" onsubmit="return false;">
     <table>
         <tr>

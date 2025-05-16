@@ -11,8 +11,7 @@
         <td> <?php echo $dato['fecha']; ?></td>
         <td> <?php echo $dato['proveedor_id']; ?></td>
         <td> <?php echo $dato['total']; ?></td>
-        <td>
-            <button onclick="  editar('<?php echo $dato['id']; ?>','<?php echo 'compras'; ?>')">editar</button></td>        
+        <td><button onclick="  editar('<?php echo $dato['id']; ?>','<?php echo 'compras'; ?>')">editar</button></td>        
         <td><button onclick="eliminar('<?php echo $dato['id']; ?>','<?php echo 'compras'; ?>')">Eliminar</button></td>
     </tr>
     <?php } ?>
